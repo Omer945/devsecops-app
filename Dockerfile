@@ -1,14 +1,10 @@
-FROM python:3.11-slim
+FROM python:3.11
 
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
-
-# Utilisateur non root (bonne pratique sécurité)
-RUN useradd -m user
-USER user
+COPY app.py .
+RUN pip install flask
 
 EXPOSE 80
-CMD ["python", "app.py"]
+
+CMD ["python3", "app.py"]
