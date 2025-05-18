@@ -21,9 +21,10 @@ jobs:
       run: docker build -t devsecops-app .
 
     - name: Install Trivy
-      run: |
-        curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
-        sudo mv trivy /usr/local/bin/
+  run: |
+    curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
+    sudo mv ./bin/trivy /usr/local/bin/
+
 
     - name: Scan Docker image with Trivy
       run: |
